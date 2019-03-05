@@ -14,8 +14,8 @@ Resources:
             CodeUri: ../
             Timeout: 30
             VpcConfig:
-                SecurityGroupIds: [sg-bac126df]
-                SubnetIds: [subnet-16868762, subnet-bdef0fd8]
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
     LifestyleGateway:
         Type: AWS::Serverless::Function
         Properties:
@@ -28,8 +28,8 @@ Resources:
             CodeUri: ../
             Timeout: 900
             VpcConfig:
-                SecurityGroupIds: [sg-bac126df]
-                SubnetIds: [subnet-16868762, subnet-bdef0fd8]
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
     LifestyleApi:
         Type: AWS::Serverless::Function
         Properties:
@@ -42,8 +42,8 @@ Resources:
             CodeUri: ../
             Timeout: 30
             VpcConfig:
-                SecurityGroupIds: [sg-bac126df]
-                SubnetIds: [subnet-16868762, subnet-bdef0fd8]
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
 
     lifestyleBackendApi:
         Type: AWS::Serverless::Api
