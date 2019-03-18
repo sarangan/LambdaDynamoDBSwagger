@@ -378,7 +378,7 @@ exports.apiHandler = async (event, context) => {
 
           //--------- get users perference ------
 
-          let user_data_limit = 3;
+          let user_data_limit = 5;
 
           if(video_ids.size < 7){
             user_data_limit = 5;
