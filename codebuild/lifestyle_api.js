@@ -73,7 +73,7 @@ let getTopCategoryData = async (category) =>{
     KeyConditionExpression: 'li_category = :category AND video_view >= :video_view',
     IndexName: 'li_category-video_view-index',
     ScanIndexForward: false,
-    Limit: 1
+    Limit: 2
   };
 
   const data = await ddb.query(params).promise();
@@ -298,7 +298,7 @@ exports.apiHandler = async (event, context) => {
 
       try {
 
-        if(playlist != 'trending'){
+        if(playlist != 'trending'){ // playlist videos
 
           params = {
             TableName: BC_TABLE,
@@ -351,7 +351,39 @@ exports.apiHandler = async (event, context) => {
           let video_ids = new Set();
 
 
+
+          //------------- get trending -----
+
+          for (let temp_category of category_array) {
+             let cat_data = await getTopCategoryData(temp_category);
+             if(cat_data && cat_data.hasOwnProperty('Items')){
+
+               for(let i = 0,l = cat_data['Items'].length; i < l; i++){
+
+                 if(cat_data['Items'][i].hasOwnProperty('id')){
+                   if(!video_ids.has(cat_data['Items'][i]['id']['N'])){
+                     let temp_data = flatten(cat_data['Items'][i]);
+                     if(checkCanAdd(temp_data)){
+                       formated_data.push(temp_data);
+                       video_ids.add(temp_data.id);
+                     }
+                   }
+                 }
+
+               }
+
+             }
+
+          }
+
           //--------- get users perference ------
+
+          let user_data_limit = 3;
+
+          if(video_ids.size < 7){
+            user_data_limit = 5;
+          }
+
 
           if('user_category' in event && event.user_category){
             let usercategory = event.user_category;
@@ -366,7 +398,7 @@ exports.apiHandler = async (event, context) => {
               KeyConditionExpression: 'li_category = :category',
               IndexName: 'li_category-published_at-index',
               ScanIndexForward: false,
-              Limit: 3
+              Limit: user_data_limit
             };
 
             data = await ddb.query(params).promise();
@@ -393,57 +425,35 @@ exports.apiHandler = async (event, context) => {
           }
 
 
-          //------------- get tending -----
-
-          for (let temp_category of category_array) {
-             let cat_data = await getTopCategoryData(temp_category);
-             if(cat_data && cat_data.hasOwnProperty('Items')){
-
-               for(let i = 0,l = cat_data['Items'].length; i < l; i++){
-
-                 if(cat_data['Items'][i].hasOwnProperty('id')){
-                   if(!video_ids.has(cat_data['Items'][i]['id']['N'])){
-                     let temp_data = flatten(cat_data['Items'][i]);
-                     if(checkCanAdd(temp_data)){
-                       formated_data.push(temp_data);
-                       video_ids.add(temp_data.id);
-                     }
-                   }
-                 }
-
-               }
-
-             }
-
-          }
 
           //------------- get latest -----
 
-          /* reduce download size
-            for (let temp_category of category_array) {
+          if(video_ids.size < 7){
 
-                let cat_latest_data = await getLatestCategoryData(temp_category);
+              for (let temp_category of category_array) {
 
-                if(cat_latest_data && cat_latest_data.hasOwnProperty('Items')){
+                  let cat_latest_data = await getLatestCategoryData(temp_category);
 
-                  for(let i = 0,l = cat_latest_data['Items'].length; i < l; i++){
+                  if(cat_latest_data && cat_latest_data.hasOwnProperty('Items')){
 
-                    if(cat_latest_data['Items'][i].hasOwnProperty('id')){
-                      if(!video_ids.has(cat_latest_data['Items'][i]['id']['N'])){
-                        let temp_data = flatten(cat_latest_data['Items'][i]);
-                        if(checkCanAdd(temp_data)){
-                          formated_data.push(temp_data);
-                          video_ids.add(temp_data.id);
+                    for(let i = 0,l = cat_latest_data['Items'].length; i < l; i++){
+
+                      if(cat_latest_data['Items'][i].hasOwnProperty('id')){
+                        if(!video_ids.has(cat_latest_data['Items'][i]['id']['N'])){
+                          let temp_data = flatten(cat_latest_data['Items'][i]);
+                          if(checkCanAdd(temp_data)){
+                            formated_data.push(temp_data);
+                            video_ids.add(temp_data.id);
+                          }
                         }
                       }
+
                     }
 
                   }
+            }
 
-                }
           }
-          */
-
 
 
 
