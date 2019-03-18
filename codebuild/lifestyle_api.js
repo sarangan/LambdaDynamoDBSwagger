@@ -381,7 +381,7 @@ exports.apiHandler = async (event, context) => {
           let user_data_limit = 5;
 
           if(video_ids.size < 7){
-            user_data_limit = 5;
+            user_data_limit = 7;
           }
 
 
