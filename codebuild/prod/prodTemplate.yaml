@@ -9,7 +9,7 @@ Resources:
             FunctionName: lifestyle-additem
             Handler: cron_process.add_item
             MemorySize: 128
-            Role: arn:aws:iam::794633948264:role/lifestyle-lambda-role
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
             Runtime: python3.6
             CodeUri: ../
             Timeout: 30
@@ -23,7 +23,7 @@ Resources:
             FunctionName: lifestyle-updateitem
             Handler: cron_update_view.update_item
             MemorySize: 128
-            Role: arn:aws:iam::794633948264:role/lifestyle-lambda-role
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
             Runtime: python3.6
             CodeUri: ../
             Timeout: 900
@@ -37,7 +37,7 @@ Resources:
             FunctionName: lifestyle-api
             Handler: lifestyle_api.apiHandler
             MemorySize: 128
-            Role: arn:aws:iam::794633948264:role/lifestyle-lambda-role
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
             Runtime: nodejs8.10
             CodeUri: ../
             Timeout: 30
