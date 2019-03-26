@@ -2,11 +2,11 @@ version: 0.1
 phases:
    build:
     commands:
-      - aws cloudformation package --template-file ./codebuild/prod/prodTemplate.yaml --s3-bucket s3-lifestyle-online-dev --s3-prefix codebuild-artifacts/lifestyle --output-template-file newProdTemplate.yaml
+      - aws cloudformation package --template-file ./codebuild/stage/stageTemplate.yaml --s3-bucket s3-lifestyle-dev --s3-prefix codebuild-artifacts/lifestyle --output-template-file newStageTemplate.yaml
 artifacts:
   type: zip
   files:
-    - newProdTemplate.yaml
+    - newStageTemplate.yaml
 cache:
   paths:
     - pip_dir/**/*

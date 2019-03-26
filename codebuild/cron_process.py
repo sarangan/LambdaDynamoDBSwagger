@@ -8,7 +8,7 @@ client_id = "8fde413c-6b87-4813-af22-a4908eb3cdc6"
 client_secret = "XnnNE3mJ4NEuy_WOvbA2yKGylYkV1t7MhLx1THdDJXofRx-h8CB-AamYCn6J_unxyJLOyk8gfqsc6-iS8OVF_g"
 access_token_url = "https://oauth.brightcove.com/v4/access_token"
 profiles_base_url = "https://cms.api.brightcove.com/v1/accounts/{account_id}"
-dynamodb_table = "bc_videos"
+dynamodb_table = "dev_bc_videos"
 
 dynamo_db = boto3.client('dynamodb')
 
