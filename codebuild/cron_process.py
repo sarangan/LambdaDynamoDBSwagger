@@ -243,6 +243,7 @@ def add_item(event, context):
     bc_response = []
     last_page = 0
 
+
     cron_log_item_data = get_last_page()
     if cron_log_item_data:
         if 'page' in cron_log_item_data and cron_log_item_data['page']:
@@ -250,6 +251,7 @@ def add_item(event, context):
                 last_page = int(cron_log_item_data['page']['N'])
 
     page = last_page + 1
+
 
     if cron_log_item_data:
         cron_log_item_data['page'] = {'N': str(page)}

@@ -2,20 +2,49 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Test automatic deployment or update of Lambda functions
 Resources:
-    LifestyleGateway:
+    LifestyleAddItem:
         Type: AWS::Serverless::Function
         Properties:
-            Description: Gateway for Lifestyle
-            FunctionName: lifestyle-gateway
-            Handler: lambda_function.lambda_handler
+            Description: Add items to dynamodb
+            FunctionName: lifestyle-additem
+            Handler: cron_process.add_item
             MemorySize: 128
-            Role: arn:aws:iam::028789939037:role/lifestyle-lambda-role
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
             Runtime: python3.6
             CodeUri: ../
             Timeout: 30
             VpcConfig:
-                SecurityGroupIds: [sg-bac126df]
-                SubnetIds: [subnet-16868762, subnet-bdef0fd8]
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
+    LifestyleGateway:
+        Type: AWS::Serverless::Function
+        Properties:
+            Description: update video view count
+            FunctionName: lifestyle-updateitem
+            Handler: cron_update_view.update_item
+            MemorySize: 128
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
+            Runtime: python3.6
+            CodeUri: ../
+            Timeout: 900
+            VpcConfig:
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
+    LifestyleApi:
+        Type: AWS::Serverless::Function
+        Properties:
+            Description: Lifestyle api function
+            FunctionName: lifestyle-api
+            Handler: lifestyle_api.apiHandler
+            MemorySize: 128
+            Role: arn:aws:iam::243939355549:role/lifestyle-lambda-role
+            Runtime: nodejs8.10
+            CodeUri: ../
+            Timeout: 30
+            VpcConfig:
+                SecurityGroupIds: [sg-050f5a0020464fcce]
+                SubnetIds: [subnet-0a538231b976a732c, subnet-09539b2304c96020f]
+
     lifestyleBackendApi:
         Type: AWS::Serverless::Api
         Properties:
