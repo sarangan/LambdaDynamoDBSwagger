@@ -252,10 +252,9 @@ def add_item(event, context):
     #
     # page = last_page + 1
 
-
-    if cron_log_item_data:
-        cron_log_item_data['page'] = {'N': str(page)}
-        cron_log_item_data['updated_at'] = {'S': str(datetime.now()) }
+    # if cron_log_item_data:
+    #     cron_log_item_data['page'] = {'N': str(page)}
+    #     cron_log_item_data['updated_at'] = {'S': str(datetime.now()) }
 
     bc_result = get_videos(30, page)
 
