@@ -243,14 +243,14 @@ def add_item(event, context):
     bc_response = []
     last_page = 0
 
-
-    cron_log_item_data = get_last_page()
-    if cron_log_item_data:
-        if 'page' in cron_log_item_data and cron_log_item_data['page']:
-            if 'N' in cron_log_item_data['page'] and cron_log_item_data['page']:
-                last_page = int(cron_log_item_data['page']['N'])
-
-    page = last_page + 1
+    #TODO
+    # cron_log_item_data = get_last_page()
+    # if cron_log_item_data:
+    #     if 'page' in cron_log_item_data and cron_log_item_data['page']:
+    #         if 'N' in cron_log_item_data['page'] and cron_log_item_data['page']:
+    #             last_page = int(cron_log_item_data['page']['N'])
+    #
+    # page = last_page + 1
 
 
     if cron_log_item_data:
@@ -261,7 +261,7 @@ def add_item(event, context):
 
     if bc_result:
 
-        update_last_process(cron_log_item_data) #update the page
+        #update_last_process(cron_log_item_data) #update the page
         video_items = []
         for item in bc_result:
 
