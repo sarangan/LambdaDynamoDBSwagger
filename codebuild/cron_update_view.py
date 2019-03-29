@@ -3,11 +3,11 @@ import json
 from botocore.vendored import requests
 from datetime import datetime
 
-account_id = "4802324438001"
-client_id = "8fde413c-6b87-4813-af22-a4908eb3cdc6"
-client_secret = "XnnNE3mJ4NEuy_WOvbA2yKGylYkV1t7MhLx1THdDJXofRx-h8CB-AamYCn6J_unxyJLOyk8gfqsc6-iS8OVF_g"
-access_token_url = "https://oauth.brightcove.com/v4/access_token"
-dynamodb_table = "dev_bc_videos"
+account_id = "XXXX"
+client_id = "XXXXX"
+client_secret = "XXXXX"
+access_token_url = "XXXX"
+dynamodb_table = "XXXX"
 
 
 dynamo_db = boto3.client('dynamodb')
