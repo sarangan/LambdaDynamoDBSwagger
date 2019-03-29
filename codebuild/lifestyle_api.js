@@ -1,5 +1,5 @@
 var AWS = require('aws-sdk');
-const BC_TABLE = "dev_bc_videos";
+const BC_TABLE = "XXXX";
 
 //fatten S N M L from object
 let flatten = (o) => {
