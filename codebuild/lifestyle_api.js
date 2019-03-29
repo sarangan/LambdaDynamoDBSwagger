@@ -35,7 +35,7 @@ let checkCanAdd = (item) =>{
   // add the sph copyright no
   if(item.hasOwnProperty('images') && item.hasOwnProperty('name') && item.hasOwnProperty('custom_fields') ){
     if( item['images'].hasOwnProperty('poster') && item.images.poster.length > 0 && item.name.length > 0 && item.custom_fields.hasOwnProperty('sphcopyright') ){
-      if(item.custom_fields['sphcopyright'].trim().toLowerCase() != "no" ){
+      if(item.custom_fields['XXXX'].trim().toLowerCase() != "no" ){
         return true;
       }
     }
