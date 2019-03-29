@@ -2,7 +2,7 @@ import boto3
 import json
 
 dynamo_db = boto3.client('dynamodb')
-bc_table = "dev_bc_videos"
+bc_table = "XXXX"
 
 def api_handler(event, context):
 
