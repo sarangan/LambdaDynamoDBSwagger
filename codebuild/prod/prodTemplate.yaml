@@ -9,13 +9,13 @@ Resources:
             FunctionName: lifestyle-gateway
             Handler: lambda_function.lambda_handler
             MemorySize: 128
-            Role: arn:aws:iam::794633948264:role/lifestyle-lambda-role
+            Role: arn:aws:iam::XXXXX:role/lifestyle-lambda-role
             Runtime: python3.6
             CodeUri: ../
             Timeout: 30
             VpcConfig:
-                SecurityGroupIds: [sg-bac126df]
-                SubnetIds: [subnet-16868762, subnet-bdef0fd8]
+                SecurityGroupIds: [sg-XXX]
+                SubnetIds: [subnet-XXX, subnet-XXX]
     lifestyleBackendApi:
         Type: AWS::Serverless::Api
         Properties:
