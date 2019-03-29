@@ -40,8 +40,8 @@
           }
         },
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::794633948264:role/lifestyle-lambda-role",
-          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:794633948264:function:lifestyle-updateitem/invocations",
+          "credentials": "arn:aws:iam::XXXX:role/lifestyle-lambda-role",
+          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:XXXX:function:lifestyle-updateitem/invocations",
           "responses": {
             "default": {
               "statusCode": "200"
@@ -103,8 +103,8 @@
           }
         },
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::794633948264:role/lifestyle-lambda-role",
-          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:794633948264:function:lifestyle-additem/invocations",
+          "credentials": "arn:aws:iam::XXXX:role/lifestyle-lambda-role",
+          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:XXXXX:function:lifestyle-additem/invocations",
           "responses": {
             "default": {
               "statusCode": "200"
@@ -219,8 +219,8 @@
           }
         },
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::794633948264:role/lifestyle-lambda-role",
-          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:794633948264:function:lifestyle-api/invocations",
+          "credentials": "arn:aws:iam::XXXX:role/lifestyle-lambda-role",
+          "uri": "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:XXXX:function:lifestyle-api/invocations",
           "responses": {
             "default": {
               "statusCode": "200",
